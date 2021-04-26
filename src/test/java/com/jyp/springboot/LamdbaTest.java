@@ -31,6 +31,7 @@ public class LamdbaTest {
         for (Hero hero : heros) {
             if(checker.test(hero))
                 System.out.print(hero);
+
         }
     }
 
