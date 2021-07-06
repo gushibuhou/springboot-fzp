@@ -5,7 +5,6 @@ package com.jyp.springboot.designpattern.singleton;/**
  * Time: 17:40
  */
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 
 /**
  * @description: TODO
@@ -15,41 +14,41 @@ import ch.qos.logback.core.net.SyslogOutputStream;
  */
 public class SingletonTest01 {
     public static void main(String[] args) {
-        MyThread thread1 = new MyThread("thread1");
-        MyThread thread2 = new MyThread("thread2");
+        MyThread01 thread1 = new MyThread01("thread1");
+        MyThread01 thread2 = new MyThread01("thread2");
         thread1.run();
         thread2.run();
-        Singleton singleton1 = thread1.getSingleton();
-        Singleton singleton2 = thread2.getSingleton();
+        Singleton01 singleton1 = thread1.getSingleton();
+        Singleton01 singleton2 = thread2.getSingleton();
         System.out.println(singleton1);
         System.out.println(singleton2);
         System.out.println(singleton2.equals(singleton1));
     }
 }
 //饿汉式(静态变量)
-class Singleton{
+class Singleton01{
     //1.构造器私有化,外部能new
-    private Singleton(){
+    private Singleton01(){
 
     }
     //2.本类静态变量创建对象实例
-    private final static Singleton instance = new Singleton();
+    private final static Singleton01 instance = new Singleton01();
 
     //3.提供一个公有的静态方法,返回实例对象
-    public static Singleton getInstance(){
+    public static Singleton01 getInstance(){
         return instance;
     }
 }
-class MyThread implements Runnable{
+class MyThread01 implements Runnable{
     private String name ;       // 表示线程的名称
-    private Singleton singleton ;       // 表示线程的名称
-    public MyThread(String name){
+    private Singleton01 singleton ;       // 表示线程的名称
+    public MyThread01(String name){
         this.name = name ;      // 通过构造方法配置name属性
     }
     public void run(){  // 覆写run()方法，作为线程 的操作主体
-        singleton = Singleton.getInstance();
+        singleton = Singleton01.getInstance();
     }
-    public Singleton getSingleton(){
+    public Singleton01 getSingleton(){
         return singleton;
     }
 }
