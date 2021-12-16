@@ -16,13 +16,20 @@ public class SingletonTest01 {
     public static void main(String[] args) {
         MyThread01 thread1 = new MyThread01("thread1");
         MyThread01 thread2 = new MyThread01("thread2");
-        thread1.run();
-        thread2.run();
-        Singleton01 singleton1 = thread1.getSingleton();
-        Singleton01 singleton2 = thread2.getSingleton();
-        System.out.println(singleton1);
-        System.out.println(singleton2);
-        System.out.println(singleton2.equals(singleton1));
+        Thread t1=new Thread(thread1);
+        Thread t2=new Thread(thread2);
+        t1.start();
+        t2.start();
+        try {
+            Thread.sleep(1000);
+            Singleton01 singleton1 = thread1.getSingleton();
+            Singleton01 singleton2 = thread2.getSingleton();
+            System.out.println(singleton1);
+            System.out.println(singleton2);
+            System.out.println(singleton2.equals(singleton1));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
 //饿汉式(静态变量)
@@ -47,6 +54,7 @@ class MyThread01 implements Runnable{
     }
     public void run(){  // 覆写run()方法，作为线程 的操作主体
         singleton = Singleton01.getInstance();
+        System.out.println(name + "运行,i=" + singleton);
     }
     public Singleton01 getSingleton(){
         return singleton;

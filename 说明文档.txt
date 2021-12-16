@@ -1,0 +1,36 @@
+参考文档: https://www.fangzhipeng.com/spring-boot.html
+项目访问路径:http://127.0.0.1:8082/springboot
+第1篇 构建springboot工程
+    出现了SpringbootApplicationTests,
+第2篇 配置文件详解
+    出现了 MiyaController,ConfigBean,LucyController,多个yml
+第3篇 JdbcTemplate
+    出现了account(AccountController,IAccountService,AccountService,IAccountDAO,AccountDaoImpl,Account)
+第4篇 JPA
+    出现了AccountDao
+    修改了AccountController,测试类 SpringbootApplicationTests 多了几个测试样例,关键字:accountDao
+    注意:AccountDao 使用自定义查询 PQL @Query,对象名必须与实体类的类名一致，严格区分大小写。
+第5篇 beatsql
+    运行不起来,先不弄
+第6篇 整合mybatis
+    出现了AccountMybatisController,AccountMapper,AccountMybatisService
+    修改了pom.xml
+    补充了generator
+        出现了generatorConfig.xml
+        修改了pom.xml
+        在mawen 双击 mybatis-generator:generate 运行
+第7篇 声明式事务
+    出现了AccountTranController,AccountTranService,AccountTranMapper
+    tran的文件(AccountTranController,AccountTranService,AccountTranMapper)和mabatis的文件(AccountMybatisController,AccountMybatisService,AccountMybatisMapper)都可以正常使用
+    注意:springboot 开启事物很简单，只需要加一行注解就可以了，前提你用的是jdbctemplate, jpa, mybatis，这种常见的orm。
+        yml中的 mybatis 和 spring 是同级的,不要弄错了
+        classpath*:后面不要有空格
+    补充了springmvc
+        pom.xml 加入了 servlet 和 tomcat 的包
+        yml 文件加入了 mvc 的配置
+        controller 文件的注解是 @Controller ,不是 @RestController 可以参考 HelloController
+第8篇 整合mongodb
+    mongodb的使用请看思维导体mongodb(mongodb安装在本机,要使用记得打开服务)
+    pom.xml 加入了 mongodb 的包
+    yml 文件加入了 mongodb 的配置  spring.data.mongodb.uri
+    出现了 Customer(实体类) ,CustomerRepository(接口) ,SpringbootMongodbApplication(测试类)

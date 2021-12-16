@@ -1,0 +1,10 @@
+参考文档: spring实战
+项目访问路径:http://127.0.0.1:8082/springboot
+20210803:
+    1.设置访问 thymeleaf 界面
+       修改 application-dev.yml 的 thymeleaf 配置
+    2.访问界面
+        http://127.0.0.1:8082/springboot/ -> 访问 HomeControllerTest 的 testHomePage() 方法
+        http://127.0.0.1:8082/springboot/homehtml -> 访问 HomeController 的 homehtml() 方法
+    3.获取数据
+        http://127.0.0.1:8082/springboot/home -> 访问 HomeController 的 home() 方法
